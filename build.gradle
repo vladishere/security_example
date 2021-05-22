@@ -1,0 +1,51 @@
+plugins {
+    id 'org.springframework.boot' version '2.5.0'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '16'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    springVerison = '2.4.6'
+    postgresVersion = '42.2.20'
+    flywayVersion = '7.9.1'
+    jwtVersion = '0.9.1'
+    lombokVersion = '1.18.20'
+}
+
+dependencies {
+    // Spring
+    implementation "org.springframework.boot:spring-boot-starter-web:$springVerison"
+    implementation "org.springframework.boot:spring-boot-starter-webflux:$springVerison"
+    implementation "org.springframework.boot:spring-boot-starter-security:$springVerison"
+
+    // Database
+    implementation "org.postgresql:postgresql:$postgresVersion"
+    implementation "org.flywaydb:flyway-core:$flywayVersion"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:$springVerison"
+
+    implementation "io.jsonwebtoken:jjwt:$jwtVersion"
+
+    // Develop support
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:$springVerison"
+    developmentOnly "org.springframework.boot:spring-boot-devtools:$springVerison"
+
+    // Test
+    // testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // testImplementation 'io.projectreactor:reactor-test'
+}

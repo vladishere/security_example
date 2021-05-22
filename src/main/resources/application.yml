@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/security
+    username: postgres
+    password: postgres
+
+jwt:
+  secret: sdawdlsmdkawmdnsda
+  live-timer: 18000
+
+logging:
+  level:
+    root: INFO
